@@ -63,14 +63,21 @@ def create_contact():
 # Read: (.get() and .select()) --- .get() is for single and .select() is everything
 # print('Read Alex: ', Contact.get(Contact.name == 'Alex')) 
 
-
+def show_contact():
+    contacts = Contact.select()
+    for person in contacts:
+        print(person.first_name)
 
 def create_new():
-    ask = input("Would you like to add a new contact? ")
+    ask = input('Would you like to add a new contact? ')
     if ask == 'yes':
         create_contact()
     else:
         print("Bye Felicia")
+
+
+
+
 
 # people = Contact.select().where(Contact.birthday < date(1985, 8, 20))
 # for person in people:
@@ -85,4 +92,4 @@ def create_new():
 # alex.delete_instance()
 
 # print(f"{alex.first_name} {alex.last_name} {alex.birthday} {alex.phone} {alex.email} {alex.address}")
-create_new()
+show_contact()
