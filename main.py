@@ -19,30 +19,7 @@ class Contact(BaseModel):
 
 # Connect to PSQL Database
 db.connect()
-
-# db.drop_tables([Contact])
-
-# db.create_tables([Contact])
-# alex = Contact(
-#     first_name = 'Alex', 
-#     last_name = 'Garcia', 
-#     birthday = date(1985, 8, 20),
-#     phone = (5714209209),
-#     email = 'afgarcia666@gmail.com', 
-#     address = 'Herndon, Va 20171')
-# alex.save()
-
-# adam = Contact(
-#     first_name = 'Adam', 
-#     last_name = 'Bates',  
-#     birthday = date(1985, 1, 16),
-#     phone = (2026660666),
-#     email = 'crazylegs@gmail.com', 
-#     address = 'College Park, MD')
-# adam.save()
-
-# Read: (.get() and .select()) --- .get() is for single and .select() is everything
-# print('Read Alex: ', Contact.get(Contact.name == 'Alex')) 
+ 
 def welcome():
     print('Welcome my simple friend \n 1: Show Contacts \n 2: Create Contact \n 3: Update Contact \n 4: Delete Contact \n 5: Exit')
     greet = input('Enter the number of what you want to do: ')
@@ -62,7 +39,7 @@ def show_contact():
     contacts = Contact.select()
     for contact in contacts:
         print(contact.first_name)
-    show = input("Case sensitive \nEnter name for full info \nOr 'q' to go back to main menu: ")
+    show = input("Enter name for full info \nCase sensitive \nOr 'q' to go back to main menu: ")
     if show == 'q':
         welcome()
     contact = Contact.get(Contact.first_name == show)
@@ -145,8 +122,4 @@ def delete_contact():
     else:
         welcome()
 
-# Delete:
-# alex.delete_instance()
-
-# print(f"{alex.first_name} {alex.last_name} {alex.birthday} {alex.phone} {alex.email} {alex.address}")
 welcome()
