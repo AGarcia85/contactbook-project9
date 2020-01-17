@@ -44,7 +44,7 @@ db.connect()
 # Read: (.get() and .select()) --- .get() is for single and .select() is everything
 # print('Read Alex: ', Contact.get(Contact.name == 'Alex')) 
 def welcome():
-    print('Welcome my simple friend /n 1:Show Contacts /n 2: Create Contact /n 3: Update Contact /n 4: Delete Contact /n 5: Exit')
+    print('Welcome my simple friend \n 1: Show Contacts \n 2: Create Contact \n 3: Update Contact \n 4: Delete Contact \n 5: Exit')
     greet = input('Enter the number of what you want to do: ')
     if greet == '1':
         show_contact()
@@ -62,11 +62,11 @@ def show_contact():
     contacts = Contact.select()
     for contact in contacts:
         print(contact.first_name)
-    show = input("Case sensitive. Enter name for full info /n Or 'q' to go back to main menu")
+    show = input("Case sensitive \nEnter name for full info \nOr 'q' to go back to main menu: ")
     if show == 'q':
         welcome()
     contact = Contact.get(Contact.first_name == show)
-    print(f'Full Name: {contact.first_name} {contact.last_name} /nBirthday: {contact.birthday} /nPhone Number: {contact.phone} /nEmail: {contact.email} /nAddress: {contact.address}')
+    print(f' Full Name: {contact.first_name} {contact.last_name} \n Birthday: {contact.birthday} \n Phone Number: {contact.phone} \n Email: {contact.email} \n Address: {contact.address}')
     show_contact()
 
 def create_contact():
@@ -88,7 +88,46 @@ def create_contact():
     add_contact.save()
     welcome()
 
-    
+def update_contact():
+    contacts = Contact.select()
+    for contact in contacts:
+        print(contact.first_name)
+    ask1 = input('Enter name of contact to update \nCase Sensitive: ')
+    if ask1 == Contact.first_name:
+        print(' 1: First name \n 2: Last name \n 3: Birthday \n 4: Phone number \n 5: Email \n 6: Address')
+        ask2 = input('Enter number of subject to update: ')
+        if ask2 == '1':
+            contact = Contact.get(Contact.first_name == ask1)
+            contact.first_name = input('New first name: ')
+            contact.save()
+            welcome()
+        elif ask2 == '2':
+            contact = Contact.get(Contact.first_name == ask1)
+            contact.last_name = input('New last name: ')
+            contact.save()
+            welcome()
+        elif ask2 == '3':
+            contact = Contact.get(Contact.first_name == ask1)
+            contact.birthday = input('New birthday: ')
+            contact.save()
+            welcome()
+        elif ask2 == '4':
+            contact = Contact.get(Contact.first_name == ask1)
+            contact.phone = input('New phone number: ')
+            contact.save()
+            welcome()
+        elif ask2 == '5':
+            contact = Contact.get(Contact.first_name == ask1)
+            contact.email = input('New email: ')
+            contact.save()
+            welcome()
+        elif ask2 == '6':
+            contact = Contact.get(Contact.first_name == ask1)
+            contact.address = input('New address: ')
+            contact.save()
+            welcome()
+        else:
+            welcome()
 
 
 # people = Contact.select().where(Contact.birthday < date(1985, 8, 20))
