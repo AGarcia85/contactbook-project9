@@ -129,15 +129,21 @@ def update_contact():
         else:
             welcome()
 
-
-# people = Contact.select().where(Contact.birthday < date(1985, 8, 20))
-# for person in people:
-#     print(person.first_name)
-
-# Update:
-# alex = Person.get(Person.name == 'Alex')
-# alex.birthday = date(1980, 8, 20)
-# alex.save()
+def delete_contact():
+    contacts = Contact.select()
+    for contact in contacts:
+        print(contact.first_name)
+    bye = input('Pick a name to get rid off: ')
+    if bye == Contact.first_name:
+        sure = input('Are you sure you want to delete this Dirtbag? y/n: ')
+        if sure == 'y':
+            contact = Contact.get(Contact.first_name == bye)
+            contact.delete_instance()
+            welcome()
+        else:
+            delete_contact()
+    else:
+        welcome()
 
 # Delete:
 # alex.delete_instance()
