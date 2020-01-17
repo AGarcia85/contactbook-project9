@@ -52,7 +52,7 @@ def welcome():
         create_contact()
     elif greet == '3':
         update_contact()
-    elif greet == '4'
+    elif greet == '4':
         delete_contact()
     else:
         print('Bye Felicia')
@@ -60,8 +60,14 @@ def welcome():
 
 def show_contact():
     contacts = Contact.select()
-    for person in contacts:
-        print(person.first_name)
+    for contact in contacts:
+        print(contact.first_name)
+    show = input("Case sensitive. Enter name for full info /n Or 'q' to go back to main menu")
+    if show == 'q':
+        welcome()
+    contact = Contact.get(Contact.first_name == show)
+    print(f'Full Name: {contact.first_name} {contact.last_name} /nBirthday: {contact.birthday} /nPhone Number: {contact.phone} /nEmail: {contact.email} /nAddress: {contact.address}')
+    show_contact()
 
 def create_contact():
     new_first_name = input('Insert First Name: ')
@@ -82,8 +88,7 @@ def create_contact():
     add_contact.save()
     welcome()
 
-
-
+    
 
 
 # people = Contact.select().where(Contact.birthday < date(1985, 8, 20))
@@ -99,4 +104,4 @@ def create_contact():
 # alex.delete_instance()
 
 # print(f"{alex.first_name} {alex.last_name} {alex.birthday} {alex.phone} {alex.email} {alex.address}")
-show_contact()
+welcome()
