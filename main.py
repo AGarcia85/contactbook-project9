@@ -16,8 +16,6 @@ class Contact(BaseModel):
     email = CharField()
     address = CharField()
  
-
-# Connect to PSQL Database
 db.connect()
  
 def welcome():
