@@ -10,9 +10,8 @@
     2 Clone down repository in your terminal command
     3 Type in command
 
-        ```python
         pipenv run python main.py
-        ```
+
     4 Enjoy!
 
 ## Why this project?
