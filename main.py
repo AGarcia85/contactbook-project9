@@ -23,25 +23,6 @@ db.connect()
 # db.drop_tables([Contact])
 
 # db.create_tables([Contact])
-
-def create_contact():
-    new_first_name = input('Insert First Name: ')
-    new_last_name = input('Insert Last Name: ')
-    new_birthday = input('Insert Birthday: ')
-    new_phone = input('Insert Phone Number: ')
-    new_email = input('Insert Email: ')
-    new_address = input('Insert Address: ')
-
-    add_contact = Contact(
-        first_name = new_first_name,
-        last_name = new_last_name,
-        birthday = new_birthday,
-        phone = new_phone,
-        email = new_email,
-        address = new_address
-    )
-    add_contact.save()
-
 # alex = Contact(
 #     first_name = 'Alex', 
 #     last_name = 'Garcia', 
@@ -62,18 +43,44 @@ def create_contact():
 
 # Read: (.get() and .select()) --- .get() is for single and .select() is everything
 # print('Read Alex: ', Contact.get(Contact.name == 'Alex')) 
+def welcome():
+    print('Welcome my simple friend /n 1:Show Contacts /n 2: Create Contact /n 3: Update Contact /n 4: Delete Contact /n 5: Exit')
+    greet = input('Enter the number of what you want to do: ')
+    if greet == '1':
+        show_contact()
+    elif greet == '2':
+        create_contact()
+    elif greet == '3':
+        update_contact()
+    elif greet == '4'
+        delete_contact()
+    else:
+        print('Bye Felicia')
+        exit()
 
 def show_contact():
     contacts = Contact.select()
     for person in contacts:
         print(person.first_name)
 
-def create_new():
-    ask = input('Would you like to add a new contact? ')
-    if ask == 'yes':
-        create_contact()
-    else:
-        print("Bye Felicia")
+def create_contact():
+    new_first_name = input('Insert First Name: ')
+    new_last_name = input('Insert Last Name: ')
+    new_birthday = input('Insert Birthday: ')
+    new_phone = input('Insert Phone Number: ')
+    new_email = input('Insert Email: ')
+    new_address = input('Insert Address: ')
+
+    add_contact = Contact(
+        first_name = new_first_name,
+        last_name = new_last_name,
+        birthday = new_birthday,
+        phone = new_phone,
+        email = new_email,
+        address = new_address
+    )
+    add_contact.save()
+    welcome()
 
 
 
