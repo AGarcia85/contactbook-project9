@@ -36,11 +36,11 @@ def welcome():
 def show_contact():
     contacts = Contact.select()
     for contact in contacts:
-        print(contact.first_name)
-    show = input("Enter name for full info \nCase sensitive \nOr 'q' to go back to main menu: ")
+        print(contact.first_name, contact.last_name)
+    show = input("Enter last name for full info \nCase sensitive \nOr 'q' to go back to main menu: ")
     if show == 'q':
         welcome()
-    contact = Contact.get(Contact.first_name == show)
+    contact = Contact.get(Contact.last_name == show)
     print(f' Full Name: {contact.first_name} {contact.last_name} \n Birthday: {contact.birthday} \n Phone Number: {contact.phone} \n Email: {contact.email} \n Address: {contact.address}')
     show_contact()
 
@@ -66,38 +66,38 @@ def create_contact():
 def update_contact():
     contacts = Contact.select()
     for contact in contacts:
-        print(contact.first_name)
-    ask1 = input('Enter name of contact to update \nCase Sensitive: ')
-    if ask1 == Contact.first_name:
+        print(contact.first_name, contact.last_name)
+    ask1 = input('Enter last name of contact to update \nCase Sensitive: ')
+    if ask1 == Contact.last_name:
         print(' 1: First name \n 2: Last name \n 3: Birthday \n 4: Phone number \n 5: Email \n 6: Address')
         ask2 = input('Enter number of subject to update: ')
         if ask2 == '1':
-            contact = Contact.get(Contact.first_name == ask1)
+            contact = Contact.get(Contact.last_name == ask1)
             contact.first_name = input('New first name: ')
             contact.save()
             welcome()
         elif ask2 == '2':
-            contact = Contact.get(Contact.first_name == ask1)
+            contact = Contact.get(Contact.last_name == ask1)
             contact.last_name = input('New last name: ')
             contact.save()
             welcome()
         elif ask2 == '3':
-            contact = Contact.get(Contact.first_name == ask1)
+            contact = Contact.get(Contact.last_name == ask1)
             contact.birthday = input('New birthday: ')
             contact.save()
             welcome()
         elif ask2 == '4':
-            contact = Contact.get(Contact.first_name == ask1)
+            contact = Contact.get(Contact.last_name == ask1)
             contact.phone = input('New phone number: ')
             contact.save()
             welcome()
         elif ask2 == '5':
-            contact = Contact.get(Contact.first_name == ask1)
+            contact = Contact.get(Contact.last_name == ask1)
             contact.email = input('New email: ')
             contact.save()
             welcome()
         elif ask2 == '6':
-            contact = Contact.get(Contact.first_name == ask1)
+            contact = Contact.get(Contact.last_name == ask1)
             contact.address = input('New address: ')
             contact.save()
             welcome()
@@ -107,12 +107,12 @@ def update_contact():
 def delete_contact():
     contacts = Contact.select()
     for contact in contacts:
-        print(contact.first_name)
-    bye = input('Pick a name to get rid off: ')
-    if bye == Contact.first_name:
-        sure = input('Are you sure you want to delete this Dirtbag? y/n: ')
+        print(contact.first_name, contact.last_name)
+    bye = input('Which Dirtbag do you want to get rid off? \n Enter last name: ')
+    if bye == Contact.last_name:
+        sure = input('Are you sure you want to kill off this Dirtbag? y/n: ')
         if sure == 'y':
-            contact = Contact.get(Contact.first_name == bye)
+            contact = Contact.get(Contact.last_name == bye)
             contact.delete_instance()
             welcome()
         else:

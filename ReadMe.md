@@ -15,7 +15,7 @@
     4 Enjoy!
 
 ## Why this project?
-    I built this project to practice my SQL-Peewee and Python skills. I wanted to build something practical and possibly useful at a later date. I want to expand my knowledge of terminal command and also add it to my portfolio
+    I built this project to practice my SQL-Peewee and Python skills. I wanted to build something practical and possibly useful at a later date. I want to expand my knowledge of terminal command and also add it to my portfolio. I would like to expand on this project and create a front end. 
 
 ## Usage
     Usage is for learning purposes and entertainment
